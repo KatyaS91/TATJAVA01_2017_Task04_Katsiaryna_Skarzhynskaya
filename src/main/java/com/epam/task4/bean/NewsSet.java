@@ -8,16 +8,25 @@ import java.util.List;
  */
 public class NewsSet {
 
-    List<News> Set = new ArrayList<News>();
+    List<News> set = new ArrayList<News>();
+
+    public List<News> getSet() {
+        return set;
+    }
 
     public void add(News news){
-        Set.add(news);
+        set.add(news);
     }
 
     @Override
     public String toString() {
         return "NewsSet{" +
-                "Set=" + Set +
+                "Set=" + set +
                 '}';
     }
+
+    public int size() {
+        return set.size();
+    }
+
 }

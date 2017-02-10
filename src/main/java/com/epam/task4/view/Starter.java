@@ -14,10 +14,13 @@ public class Starter {
     public static void main(String[] args){
 
         News bookNews = new BookNews();
-        bookNews.setFindParam("Bible");
+        bookNews.setFindParam("Ivanhoe");
+        bookNews.setTitle("Ivanhoe");
+        bookNews.setDescription("Some description of the book");
 
         Controller controller = new Controller();
         System.out.println(controller.executeTask("FIND_BOOK_NEWS_BY_TITLE", bookNews));
+        //System.out.println(controller.executeTask("ADD_BOOK_NEWS", bookNews));
 
     }
 }
