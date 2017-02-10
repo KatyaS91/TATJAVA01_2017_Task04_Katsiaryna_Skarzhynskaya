@@ -1,18 +1,12 @@
-/*
-package com.epam.task4.com.epam.task4.dao.commection.pool;
+package com.epam.task4.dao.commection.pool;
 
-import javax.sql.PooledConnection;
 import java.sql.*;
 import java.util.Locale;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-*/
-/**
- * Created by Katsiaryna_Skarzhyns on 2/9/2017.
- *//*
+public class ConnectionPool {
 
-public final class ConnectionPool {
     private BlockingQueue<Connection> connectionQueue;
     private BlockingQueue<Connection> givenAwayConQueue;
 
@@ -21,6 +15,13 @@ public final class ConnectionPool {
     private String user;
     private String password;
     private int poolsize;
+    private Connection connection;
+
+    private final static ConnectionPool instance = new ConnectionPool();
+
+    public static ConnectionPool getInstance() {
+        return instance;
+    }
 
     private ConnectionPool(){
         DBResourceManager dbResourceManager = DBResourceManager.getInstance();
@@ -36,20 +37,15 @@ public final class ConnectionPool {
         }
     }
 
-    public void initPoolData() throws ConnectionPoolException{
+    public void initPoolData() throws ConnectionPoolException {
         Locale.setDefault(Locale.ENGLISH);
-
         try {
             Class.forName(driverName);
             givenAwayConQueue = new ArrayBlockingQueue<Connection>(poolsize);
             connectionQueue = new ArrayBlockingQueue<Connection>(poolsize);
             for (int i = 0; i < poolsize; i++){
                 Connection connection = DriverManager.getConnection(url, user, password);
-*/
-/*                PooledConnection pooledConnection = new PooledConnection(connection);
-                connectionQueue.add(pooledConnection);*//*
-
-
+                connectionQueue.add(connection);
             }
         } catch (SQLException e){
             throw new ConnectionPoolException("SQLException in ConnectionPool", e);
@@ -57,19 +53,6 @@ public final class ConnectionPool {
             throw new  ConnectionPoolException ("Cant find database driver class", e);
         }
     }
-
-    public void dispose(){
-        clearConnectionQueue();
-    }
-
-    private void clearConnectionQueue(){
-        try {
-        closeConnectionQueue(givenAwayConQueue);
-        closeConnectionQueue(connectionQueue);
-    } catch (SQLException e){
-        // logger
-    }
-}
 
     public Connection takeConnection() throws ConnectionPoolException{
         Connection connection = null;
@@ -82,7 +65,7 @@ public final class ConnectionPool {
         return connection;
     }
 
-    public void closeConnectionQueue(Connection con, Statement st, ResultSet rs){
+    public void closeConnection(Connection con, Statement st, ResultSet rs) {
         try {
             con.close();
         } catch (SQLException e){
@@ -113,48 +96,19 @@ public final class ConnectionPool {
         }
     }
 
-    private void closeConnectionsQueue(BlockingQueue<Connection> queue) throws SQLException{
-        Connection connection;
-        while ((connection = queue.poll()) != null) {
-            if (!connection.getAutoCommit()){
-                connection.commit();
-            }
-            ((PolledConnection) connection).reallyClose();
+    public void close() throws SQLException {
+        if (connection.isClosed()) {
+            throw new SQLException("Attempting to close closed connection");
+        }
+        if (connection.isReadOnly()) {
+            connection.setReadOnly(false);
+        }
+        if (!givenAwayConQueue.remove(this)) {
+            throw new SQLException("Error deleting connection from the given away connect pool");
+        }
+        if (!connectionQueue.offer(connection)) {
+            throw new SQLException("Error allocating connection in the pool");
         }
     }
-    class PolledConnection {
-        private Connection connection;
-        public void PooledConnection(Connection c) throws SQLException{
-            this.connection = c;
-            this.connection.setAutoCommit(true);
-        }
 
-        public void reallyClose() throws SQLException{
-            connection.close();
-        }
-
-        public void clearWarnings() throws SQLException{
-            connection.clearWarnings();
-        }
-
-        public void close() throws SQLException{
-            if (connection.isClosed()){
-                throw new SQLException("Attempting to close closed connection");
-            }
-            if(connection.isReadOnly()){
-                connection.setReadOnly(false);
-            }
-            if(!givenAwayConQueue.remove(this)){
-                throw new SQLException("Error deleting connection from the given away connect pool");
-            }
-            if (!connectionQueue.offer(connection)){
-                throw new SQLException("Error allocating connection in the pool");
-            }
-        }
-
-        public void commit() throws SQLException{
-            connection.commit();
-        }
-    }
 }
-*/

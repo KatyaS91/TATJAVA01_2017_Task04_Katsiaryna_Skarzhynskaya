@@ -2,6 +2,8 @@ package com.epam.task4.dao;
 
 import com.epam.task4.bean.News;
 import com.epam.task4.bean.NewsSet;
+import com.epam.task4.dao.commection.pool.ConnectionPool;
+import com.epam.task4.dao.commection.pool.ConnectionPoolException;
 
 import java.sql.*;
 
@@ -60,11 +62,9 @@ public class SQLBookNewsDAO implements BookNewsDAO {
     }
 
     public NewsSet findNewsByTitle(String title) throws DAOException{
-        Connection con = null;
         NewsSet set = new NewsSet();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/catalog", "root","admin");
+            Connection con = ConnectionPool.getInstance().takeConnection();
             Statement st = con.createStatement();
             String sql = "SELECT * FROM booknews WHERE title = " + "'" + title + "'";
             ResultSet rs = st.executeQuery(sql);
@@ -76,8 +76,8 @@ public class SQLBookNewsDAO implements BookNewsDAO {
             }
         } catch (SQLException e){
             // some log
-        } catch (ClassNotFoundException e){
-            //somw log
+        } catch (ConnectionPoolException e) {
+            // some log
         }
 
         return set;
