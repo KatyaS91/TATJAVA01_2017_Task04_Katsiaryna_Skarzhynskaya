@@ -18,7 +18,7 @@ public class FindBookNewsByTitle implements Command {
         try {
             NewsSet x = bookNewsService.findNewsByTitle(news.getFindParam());
             for (int i = 0; i < x.size(); i++) {
-                response = x.getSet().get(i).toString();
+                response += x.getSet().get(i).toString();
             }
         } catch (ServiceException e) {
             response = "no such news";

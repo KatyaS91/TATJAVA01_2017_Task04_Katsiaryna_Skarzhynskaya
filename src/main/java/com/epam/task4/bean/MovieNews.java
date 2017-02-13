@@ -1,10 +1,9 @@
 package com.epam.task4.bean;
 
 /**
- * Created by Katsiaryna_Skarzhyns on 2/8/2017.
+ * Created by Katsiaryna_Skarzhyns on 2/13/2017.
  */
-public class BookNews extends News{
-
+public class MovieNews extends News {
     private String title;
     private String description;
     private String findParam;
@@ -17,7 +16,6 @@ public class BookNews extends News{
     public void setFindParam(String findParam) {
         this.findParam = findParam;
     }
-
 
 
     public String getTitle() {
@@ -38,13 +36,10 @@ public class BookNews extends News{
 
     @Override
     public String toString() {
-        return "BookNews{" +
+        return "MovieNews{" +
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", findParam='" + findParam + '\'' +
                 '}';
     }
-
-
-
 }

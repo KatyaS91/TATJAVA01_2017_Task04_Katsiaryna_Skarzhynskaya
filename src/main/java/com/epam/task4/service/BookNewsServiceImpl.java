@@ -16,7 +16,7 @@ public class BookNewsServiceImpl implements BookNewsService {
             BookNewsDAO bookNewsDAO = daoObjectFactory.getBookNewsDAO();
             bookNewsDAO.putBookNews(news);
         } catch (DAOException e){
-            // some log
+            System.out.println("Error service layer");
         }
     }
 
@@ -27,7 +27,7 @@ public class BookNewsServiceImpl implements BookNewsService {
             BookNewsDAO bookNewsDAO = daoObjectFactory.getBookNewsDAO();
             x = bookNewsDAO.selectAllBookNews();
         } catch (DAOException e){
-            // some log
+            System.out.println("Error service layer");
         }
         return x;
     }
@@ -39,7 +39,7 @@ public class BookNewsServiceImpl implements BookNewsService {
             BookNewsDAO bookNewsDAO = daoObjectFactory.getBookNewsDAO();
             x = bookNewsDAO.findNewsByTitle(title);
         } catch (DAOException e){
-            // some log
+            System.out.println("Error service layer");
         }
         return x;
     }

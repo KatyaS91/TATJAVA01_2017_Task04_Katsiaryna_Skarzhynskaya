@@ -15,7 +15,6 @@ public class ConnectionPool {
     private String user;
     private String password;
     private int poolsize;
-    private Connection connection;
 
     private final static ConnectionPool instance = new ConnectionPool();
 
@@ -69,17 +68,17 @@ public class ConnectionPool {
         try {
             con.close();
         } catch (SQLException e){
-            // logger connection is not return to the pool
+            System.out.println("logger connection is not return to the pool");
         }
         try {
             rs.close();
         } catch (SQLException e){
-            // logger resultset is not closed
+            System.out.println("logger resultset is not closed");
         }
         try {
             st.close();
         } catch (SQLException e){
-            // logger statment is not closed
+            System.out.println("logger statment is not closed");
         }
     }
 
@@ -87,27 +86,12 @@ public class ConnectionPool {
         try {
             con.close();
         } catch (SQLException e){
-            //logger connection is not return to the pool
+            System.out.println("logger connection is not return to the pool");
         }
         try {
             st.close();
         } catch (SQLException e){
-            // logger statment is not closed
-        }
-    }
-
-    public void close() throws SQLException {
-        if (connection.isClosed()) {
-            throw new SQLException("Attempting to close closed connection");
-        }
-        if (connection.isReadOnly()) {
-            connection.setReadOnly(false);
-        }
-        if (!givenAwayConQueue.remove(this)) {
-            throw new SQLException("Error deleting connection from the given away connect pool");
-        }
-        if (!connectionQueue.offer(connection)) {
-            throw new SQLException("Error allocating connection in the pool");
+            System.out.println("logger statment is not closed");
         }
     }
 

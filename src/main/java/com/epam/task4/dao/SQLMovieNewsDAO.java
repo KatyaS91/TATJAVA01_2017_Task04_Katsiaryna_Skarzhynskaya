@@ -1,6 +1,6 @@
 package com.epam.task4.dao;
 
-import com.epam.task4.bean.BookNews;
+import com.epam.task4.bean.MovieNews;
 import com.epam.task4.bean.News;
 import com.epam.task4.bean.NewsSet;
 import com.epam.task4.dao.commection.pool.ConnectionPool;
@@ -9,9 +9,9 @@ import com.epam.task4.dao.commection.pool.ConnectionPoolException;
 import java.sql.*;
 
 /**
- * Created by Katsiaryna_Skarzhyns on 2/8/2017.
+ * Created by Katsiaryna_Skarzhyns on 2/13/2017.
  */
-public class SQLBookNewsDAO implements BookNewsDAO {
+public class SQLMovieNewsDAO implements MovieNewsDAO {
     private Connection con;
 
     private Connection takeCon() {
@@ -25,10 +25,10 @@ public class SQLBookNewsDAO implements BookNewsDAO {
 
     }
 
-    public void putBookNews(News news) throws DAOException {
+    public void putMovieNews(News news) throws DAOException {
         try {
             takeCon();
-            String sql = "INSERT INTO booknews(title,description) VALUES(?,?)";
+            String sql = "INSERT INTO movienews(title,description) VALUES(?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, news.getTitle());
             ps.setString(2, news.getDescription());
@@ -47,20 +47,20 @@ public class SQLBookNewsDAO implements BookNewsDAO {
         }
     }
 
-    public NewsSet selectAllBookNews() throws DAOException {
+    public NewsSet selectAllMovieNews() throws DAOException {
         NewsSet set = new NewsSet();
         try {
             takeCon();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM booknews");
+            ResultSet rs = st.executeQuery("SELECT * FROM movienews");
             while (rs.next()) {
-                News news = new BookNews();
+                News news = new MovieNews();
                 news.setTitle(rs.getString("title"));
                 news.setDescription(rs.getString("description"));
                 set.add(news);
             }
         } catch (SQLException e) {
-            System.out.println("some error in findBook");
+            System.out.println("some error in findMovie");
         } finally {
             try {
                 if (con != null) {
@@ -78,10 +78,10 @@ public class SQLBookNewsDAO implements BookNewsDAO {
         try {
             takeCon();
             Statement st = con.createStatement();
-            String sql = "SELECT * FROM booknews WHERE title ='" + title + "'";
+            String sql = "SELECT * FROM movienews WHERE title ='" + title + "'";
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                News news = new BookNews();
+                News news = new MovieNews();
                 news.setTitle(rs.getString("title"));
                 news.setDescription(rs.getString("description"));
                 set.add(news);

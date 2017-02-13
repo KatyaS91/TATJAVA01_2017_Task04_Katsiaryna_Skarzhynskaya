@@ -7,8 +7,8 @@ public final class DAOFactory {
     private static final DAOFactory instance = new DAOFactory();
 
     private final BookNewsDAO sqlBookNewsImpl = new SQLBookNewsDAO();
-   // private final DiskNewsDAO sqlDiskNewsImpl = new SQLDiskNewsDAO();
-   // private final MovieNewsDAO sqlMovieNewsImpl = new SQLMovieNewsDAO();
+    private final DiskNewsDAO sqlDiskNewsImpl = new SQLDiskNewsDAO();
+    private final MovieNewsDAO sqlMovieNewsImpl = new SQLMovieNewsDAO();
 
     private DAOFactory(){}
 
@@ -20,13 +20,13 @@ public final class DAOFactory {
         return sqlBookNewsImpl;
     }
 
-/*    public DiskNewsDAO getDiskNewsDAO(){
+    public DiskNewsDAO getDiskNewsDAO() {
         return sqlDiskNewsImpl;
     }
 
     public MovieNewsDAO getMovieNewsDAO(){
         return sqlMovieNewsImpl;
     }
-}*/
+
 
 }

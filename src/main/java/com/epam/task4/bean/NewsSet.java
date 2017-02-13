@@ -14,15 +14,15 @@ public class NewsSet {
         return set;
     }
 
-    public void add(News news){
-        set.add(news);
-    }
-
     @Override
     public String toString() {
         return "NewsSet{" +
-                "Set=" + set +
+                "set=" + set +
                 '}';
+    }
+
+    public void add(News news) {
+        set.add(news);
     }
 
     public int size() {

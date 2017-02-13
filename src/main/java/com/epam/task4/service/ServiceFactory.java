@@ -7,8 +7,8 @@ public final class ServiceFactory {
     private static final ServiceFactory instance = new ServiceFactory();
 
     private final BookNewsService bookNewsService = new BookNewsServiceImpl();
-/*    private final DiskNewsService diskNewsService = new DiskNewsServiceImpl();
-    private final MovieNewsService movieNewsService = new MovieNewsServiceImpl();*/
+    private final DiskNewsService diskNewsService = new DiskNewsServiceImpl();
+    private final MovieNewsService movieNewsService = new MovieNewsServiceImpl();
 
     private ServiceFactory(){}
 
@@ -19,10 +19,13 @@ public final class ServiceFactory {
     public BookNewsService getBookNewsService(){
         return bookNewsService;
     }
-/*    public DiskNewsService getDiskNewsService(){ return diskNewsService; }
+
+    public DiskNewsService getDiskNewsService() {
+        return diskNewsService;
+    }
     public MovieNewsService getMovieNewsService(){
         return movieNewsService;
-    }*/
+    }
 
 
 }
