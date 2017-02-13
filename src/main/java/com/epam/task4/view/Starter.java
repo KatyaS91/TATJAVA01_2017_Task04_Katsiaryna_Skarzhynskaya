@@ -2,6 +2,7 @@ package com.epam.task4.view;
 
 import com.epam.task4.bean.BookNews;
 import com.epam.task4.bean.DiskNews;
+import com.epam.task4.bean.MovieNews;
 import com.epam.task4.bean.News;
 import com.epam.task4.controller.Controller;
 
@@ -14,19 +15,31 @@ import java.awt.print.Book;
 public class Starter {
     public static void main(String[] args){
 
+        Controller controller = new Controller();
+
         News bookNews = new BookNews();
-        bookNews.setFindParam("Ivanhoe");
         bookNews.setTitle("Ivanhoe");
         bookNews.setDescription("Some description of the book");
-
-        Controller controller = new Controller();
+        bookNews.setFindParam("Bible");
         //System.out.println(controller.executeTask("FIND_BOOK_NEWS", bookNews));
         //System.out.println(controller.executeTask("ADD_BOOK_NEWS", bookNews));
+        //System.out.println(controller.executeTask("ADD_BOOK_NEWS_BY_TITLE", bookNews));
+
         News diskNews = new DiskNews();
         diskNews.setTitle("Traviata");
         diskNews.setDescription("Some description");
         diskNews.setFindParam("Rigoletto");
         //System.out.println(controller.executeTask("FIND_DISK_NEWS_BY_TITLE", diskNews));
+        //System.out.println(controller.executeTask("FIND_DISK_NEWS", diskNews));
+        //System.out.println(controller.executeTask("ADD_DISK_NEWS", diskNews));
+
+        News movieNews = new MovieNews();
+        movieNews.setTitle("Insomnia");
+        movieNews.setDescription("Some description");
+        movieNews.setFindParam("Titanik");
+        //System.out.println(controller.executeTask("FIND_MOVIE_NEWS_BY_TITLE", movieNews));
+        //System.out.println(controller.executeTask("FIND_MOVIE_NEWS", movieNews));
+        System.out.println(controller.executeTask("ADD_MOVIE_NEWS", movieNews));
 
 
     }

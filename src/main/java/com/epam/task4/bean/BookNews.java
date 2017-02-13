@@ -9,7 +9,6 @@ public class BookNews extends News{
     private String description;
     private String findParam;
 
-
     public String getFindParam() {
         return findParam;
     }
@@ -17,8 +16,6 @@ public class BookNews extends News{
     public void setFindParam(String findParam) {
         this.findParam = findParam;
     }
-
-
 
     public String getTitle() {
         return title;

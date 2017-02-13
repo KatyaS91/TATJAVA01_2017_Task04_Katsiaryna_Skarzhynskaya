@@ -8,7 +8,6 @@ public class DiskNews extends News {
     private String description;
     private String findParam;
 
-
     public String getFindParam() {
         return findParam;
     }
@@ -16,7 +15,6 @@ public class DiskNews extends News {
     public void setFindParam(String findParam) {
         this.findParam = findParam;
     }
-
 
     public String getTitle() {
         return title;
