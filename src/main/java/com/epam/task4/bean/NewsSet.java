@@ -14,13 +14,6 @@ public class NewsSet {
         return set;
     }
 
-    @Override
-    public String toString() {
-        return "NewsSet{" +
-                "set=" + set +
-                '}';
-    }
-
     public void add(News news) {
         set.add(news);
     }
@@ -29,4 +22,10 @@ public class NewsSet {
         return set.size();
     }
 
+    @Override
+    public String toString() {
+        return "NewsSet{" +
+                "set=" + set +
+                '}';
+    }
 }

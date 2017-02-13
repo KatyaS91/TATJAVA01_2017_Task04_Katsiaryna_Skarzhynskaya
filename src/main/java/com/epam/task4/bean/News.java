@@ -32,4 +32,13 @@ public class News {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", findParam='" + findParam + '\'' +
+                '}';
+    }
 }

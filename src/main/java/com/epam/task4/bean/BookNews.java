@@ -41,7 +41,4 @@ public class BookNews extends News{
                 ", findParam='" + findParam + '\'' +
                 '}';
     }
-
-
-
 }

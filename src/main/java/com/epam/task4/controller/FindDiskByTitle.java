@@ -10,7 +10,7 @@ import com.epam.task4.service.ServiceFactory;
  * Created by Katsiaryna_Skarzhyns on 2/13/2017.
  */
 public class FindDiskByTitle implements Command {
-    String response = null;
+    String response = "";
 
     public String execute(News news) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -18,7 +18,7 @@ public class FindDiskByTitle implements Command {
         try {
             NewsSet x = diskNewsService.findNewsByTitle(news.getFindParam());
             for (int i = 0; i < x.size(); i++) {
-                response += x.getSet().get(i).toString();
+                response += x.getSet().get(i).toString() + "\n";
             }
         } catch (ServiceException e) {
             response = "no such disk";
