@@ -20,7 +20,7 @@ public class Starter {
         bookNews.setDescription("Some description of the book");
         bookNews.setFindParam("Bible");
         System.out.println("All book news: " + "\n" + controller.executeTask("FIND_BOOK_NEWS", bookNews));
-        //System.out.println(controller.executeTask("ADD_BOOK_NEWS", bookNews));
+        System.out.println(controller.executeTask("ADD_BOOK_NEWS", bookNews));
         System.out.println("All books with title " + bookNews.getFindParam() + ": " + "\n" + controller.executeTask("FIND_BOOK_NEWS_BY_TITLE", bookNews));
 
         News diskNews = new DiskNews();
@@ -29,7 +29,7 @@ public class Starter {
         diskNews.setFindParam("Rigoletto");
         System.out.println("All disk with title " + diskNews.getFindParam() + ": " + "\n" + controller.executeTask("FIND_DISK_NEWS_BY_TITLE", diskNews));
         System.out.println("All disk news: " + "\n" + controller.executeTask("FIND_DISK_NEWS", diskNews));
-        //System.out.println(controller.executeTask("ADD_DISK_NEWS", diskNews));
+        System.out.println(controller.executeTask("ADD_DISK_NEWS", diskNews));
 
         News movieNews = new MovieNews();
         movieNews.setTitle("Insomnia");
@@ -37,7 +37,7 @@ public class Starter {
         movieNews.setFindParam("Titanik");
         System.out.println("All movies with title " + movieNews.getFindParam() + ": " + "\n" + controller.executeTask("FIND_MOVIE_NEWS_BY_TITLE", movieNews));
         System.out.println("All movie news: " + "\n" + controller.executeTask("FIND_MOVIE_NEWS", movieNews));
-        //System.out.println(controller.executeTask("ADD_MOVIE_NEWS", movieNews));
+        System.out.println(controller.executeTask("ADD_MOVIE_NEWS", movieNews));
 
 
     }

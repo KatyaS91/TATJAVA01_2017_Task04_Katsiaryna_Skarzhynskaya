@@ -9,6 +9,8 @@ public class News {
     private String description;
     private String findParam;
 
+    public News(){}
+
     public String getFindParam() {
         return findParam;
     }
@@ -40,5 +42,25 @@ public class News {
                 ", description='" + description + '\'' +
                 ", findParam='" + findParam + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        News news = (News) o;
+
+        if (!title.equals(news.title)) return false;
+        if (!description.equals(news.description)) return false;
+        return findParam != null ? findParam.equals(news.findParam) : news.findParam == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title.hashCode();
+        result = 31 * result + description.hashCode();
+        result = 31 * result + (findParam != null ? findParam.hashCode() : 0);
+        return result;
     }
 }

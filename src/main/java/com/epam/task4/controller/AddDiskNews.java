@@ -9,7 +9,7 @@ import com.epam.task4.service.ServiceFactory;
 /**
  * Created by Katsiaryna_Skarzhyns on 2/13/2017.
  */
-public class AddDiskNews implements Command {
+public final class AddDiskNews implements Command {
     String response = null;
 
     public String execute(News news) {

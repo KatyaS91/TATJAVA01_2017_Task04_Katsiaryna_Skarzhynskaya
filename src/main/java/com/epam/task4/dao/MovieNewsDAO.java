@@ -8,8 +8,6 @@ import com.epam.task4.bean.NewsSet;
  */
 public interface MovieNewsDAO {
     void putMovieNews(News news) throws DAOException;
-
     NewsSet selectAllMovieNews() throws DAOException;
-
     NewsSet findNewsByTitle(String title) throws DAOException;
 }

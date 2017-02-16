@@ -28,4 +28,5 @@ public class NewsSet {
                 "set=" + set +
                 '}';
     }
+
 }

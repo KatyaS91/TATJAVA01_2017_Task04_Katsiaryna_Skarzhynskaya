@@ -15,11 +15,9 @@ public final class ServiceFactory {
     public static ServiceFactory getInstance(){
         return instance;
     }
-
     public BookNewsService getBookNewsService(){
         return bookNewsService;
     }
-
     public DiskNewsService getDiskNewsService() {
         return diskNewsService;
     }

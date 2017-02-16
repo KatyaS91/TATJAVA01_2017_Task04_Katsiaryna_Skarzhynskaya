@@ -5,7 +5,7 @@ import java.util.Locale;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-public class ConnectionPool {
+public final class ConnectionPool {
 
     private BlockingQueue<Connection> connectionQueue;
     private BlockingQueue<Connection> givenAwayConQueue;

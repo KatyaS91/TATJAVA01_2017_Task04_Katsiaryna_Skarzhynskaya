@@ -8,7 +8,7 @@ import com.epam.task4.service.ServiceFactory;
 /**
  * Created by Katsiaryna_Skarzhyns on 2/13/2017.
  */
-public class AddMovieNews implements Command {
+public final class AddMovieNews implements Command {
     String response = null;
 
     public String execute(News news) {

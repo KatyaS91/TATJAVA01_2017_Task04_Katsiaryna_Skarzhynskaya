@@ -12,8 +12,8 @@ import java.sql.*;
  * Created by Katsiaryna_Skarzhyns on 2/13/2017.
  */
 public class SQLMovieNewsDAO implements MovieNewsDAO {
-    private Connection con;
 
+    private Connection con;
     private Connection takeCon() {
         try {
             ConnectionPool.getInstance().initPoolData();

@@ -9,7 +9,7 @@ import com.epam.task4.service.ServiceFactory;
 /**
  * Created by Katsiaryna_Skarzhyns on 2/9/2017.
  */
-public class FindBookNewsByTitle implements Command {
+public final class FindBookNewsByTitle implements Command {
     String response = "";
 
     public String execute(News news) {

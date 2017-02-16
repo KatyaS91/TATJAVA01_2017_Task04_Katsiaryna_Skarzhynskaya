@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by Katsiaryna_Skarzhyns on 2/9/2017.
  */
-public class CommandProvider {
+public final class CommandProvider {
     private final Map<CommandName, Command> repository = new HashMap<CommandName, Command>();
 
     CommandProvider(){

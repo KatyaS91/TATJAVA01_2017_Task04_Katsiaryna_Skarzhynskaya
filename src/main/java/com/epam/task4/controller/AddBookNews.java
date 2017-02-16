@@ -9,7 +9,7 @@ import com.epam.task4.service.ServiceFactory;
 /**
  * Created by Katsiaryna_Skarzhyns on 2/9/2017.
  */
-public class AddBookNews implements Command {
+public final class AddBookNews implements Command {
     String response = null;
     public String execute(News news){
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
